@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Reports</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container py-4">
+    <div class="text-center mb-4">
+      <h2 class="text-primary">📊 Reports & Analytics</h2>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4 text-center">
+      <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Total Bookings</h6>
+            <h4><%= totalBookings %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Total Customers</h6>
+            <h4><%= totalCustomers %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Total Products</h6>
+            <h4><%= totalProducts %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h6>Total Revenue</h6>
+            <h4>₹<%= totalRevenue %></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Most Booked Products -->
+    <div class="mb-4">
+      <h5 class="text-secondary mb-3">🔥 Most Booked Products</h5>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Total Qty Booked</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% mostBooked.forEach(p => { %>
+              <tr>
+                <td><%= p.name %></td>
+                <td><%= p.totalQty %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <div>
+      <h5 class="text-secondary mb-3">🕒 Recent Bookings</h5>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>ID</th>
+              <th>Customer ID</th>
+              <th>Product ID</th>
+              <th>Qty</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% recentBookings.forEach(b => { %>
+              <tr>
+                <td><%= b[0] %></td>
+                <td><%= b[1] %></td>
+                <td><%= b[2] %></td>
+                <td><%= b[3] %></td>
+                <td><%= new Date(b[4]).toLocaleString() %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="/admin" class="btn btn-secondary">← Back to Dashboard</a>
+    </div>
+  </div>
+
+</body>
+</html>

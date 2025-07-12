@@ -1,0 +1,21 @@
+<h2>Edit Booking</h2>
+<form method="POST" action="/edit-booking/<%= booking.id %>">
+  <label>Customer:</label>
+  <select name="customerId">
+    <% customers.forEach(c => { %>
+      <option value="<%= c[0] %>" <%= booking.customerId === c[0] ? 'selected' : '' %>><%= c[1] %></option>
+    <% }) %>
+  </select><br><br>
+
+  <label>Product:</label>
+  <select name="productId">
+    <% products.forEach(p => { %>
+      <option value="<%= p[0] %>" <%= booking.productId === p[0] ? 'selected' : '' %>><%= p[1] %></option>
+    <% }) %>
+  </select><br><br>
+
+  <label>Quantity:</label>
+  <input type="number" name="qty" value="<%= booking.qty %>" required><br><br>
+
+  <button type="submit">Update Booking</button>
+</form>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Inventory App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      font-family: 'Urbanist', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .form-control {
+      background-color: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255,255,255,0.2);
+      color: #fff;
+      border-color: #0d6efd;
+      box-shadow: none;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      background: #0d6efd;
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background: #0b5ed7;
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    ::placeholder {
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="glass-card" method="POST" action="/login">
+    <h2>🚀 Login to Inventory</h2>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <div class="mb-3">
+      <input type="text" name="username" class="form-control" placeholder="Username" required />
+    </div>
+    <div class="mb-4">
+      <input type="password" name="password" class="form-control" placeholder="Password" required />
+    </div>
+    <button type="submit" class="btn btn-login">Login</button>
+  </form>
+
+</body>
+</html>
